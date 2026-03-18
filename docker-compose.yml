@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - catalog-service
+
+  catalog-service:
+    build: ./catalog
+    depends_on:
+      - review-service
+      - rating-service
+
+  review-service:
+    build: ./review
+
+  rating-service:
+    build: ./rating
